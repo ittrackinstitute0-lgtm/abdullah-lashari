@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toy Categories | Hafeez Toy Store Pakistan</title>
+  <meta name="description" content="Explore all 8 dedicated toy categories at Hafeez Toy Store: Remote Control Toys, Cars & Vehicles, Dolls, Action Figures, STEM Educational Toys, Board Games, Soft Toys and Outdoor Fun.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar">
+    <span>🎉 <strong>FREE Delivery</strong> across Pakistan on orders over Rs. 3,000! | Cash on Delivery Available</span>
+    <a href="https://wa.me/923008765432" target="_blank" rel="noopener">📱 WhatsApp: 0300-8765432</a>
+  </div>
+
+  <!-- Sticky Navbar -->
+  <header class="header-sticky">
+    <div class="container navbar-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon-bubble">🧸</div>
+        <div class="brand-text-group">
+          <span class="brand-name">Hafeez <span>Toy Store</span></span>
+          <span class="brand-tagline">Where Every Toy Brings a Smile</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="categories.html" class="nav-link active">Categories</a></li>
+          <li><a href="products.html" class="nav-link">Products</a></li>
+          <li><a href="index.html#special-offers" class="nav-link">Deals 🔥</a></li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button onclick="window.HTSCart.openCartDrawer()" class="action-btn" title="View Shopping Cart">
+          <span>🛒</span>
+          <span class="action-badge cart-counter-badge" style="display:none;">0</span>
+        </button>
+        <a href="admin.html" class="admin-link-btn">
+          <span>⚙️</span> Admin
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <div style="background:var(--grad-hero); padding:50px 0 30px; text-align:center; border-bottom:1px solid #F1F5F9;">
+    <div class="container" style="max-width:750px;">
+      <span class="section-tag">Explore Worlds of Fun</span>
+      <h1 style="font-family:var(--font-heading); font-size:2.8rem; margin-bottom:12px;">Discover All Toy Categories 🎨</h1>
+      <p style="color:var(--text-muted); font-size:1.1rem;">From high-tech RC vehicles to creative educational sets, find the ideal toy suited for your child's age and passions.</p>
+    </div>
+  </div>
+
+  <!-- 8 Full Category Showcase Cards -->
+  <main class="section-wrap" style="padding:50px 0 80px;">
+    <div class="container">
+      <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:30px;">
+
+        <!-- 1. Cars & Vehicles -->
+        <div style="background:#FFF; border-radius:var(--radius-lg); border:2px solid #F1F5F9; box-shadow:var(--shadow-sm); overflow:hidden; display:grid; grid-template-columns:1fr 1.2fr;">
+          <img src="https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?auto=format&fit=crop&w=600&q=80" alt="Cars and Vehicles" style="width:100%; height:100%; object-fit:cover;">
+          <div style="padding:28px; display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <span style="font-size:1.6rem;">🚗</span>
+              <h3 style="font-family:var(--font-heading); font-size:1.4rem; color:var(--primary); margin:6px 0;">Cars & Vehicles</h3>
+              <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:16px;">Die-cast metal cars, monster trucks, vehicle transporter trucks, racetracks, and train sets.</p>
+            </div>
+            <a href="products.html?category=Cars%20%26%20Vehicles" class="btn-secondary" style="padding:8px 20px; font-size:0.9rem; text-align:center;">
+              Explore Cars (25+ Toys) →
+            </a>
+          </div>
+        </div>
+
+        <!-- 2. Dolls -->
+        <div style="background:#FFF; border-radius:var(--radius-lg); border:2px solid #F1F5F9; box-shadow:var(--shadow-sm); overflow:hidden; display:grid; grid-template-columns:1fr 1.2fr;">
+          <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=600&q=80" alt="Dolls and Dollhouses" style="width:100%; height:100%; object-fit:cover;">
+          <div style="padding:28px; display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <span style="font-size:1.6rem;">👧</span>
+              <h3 style="font-family:var(--font-heading); font-size:1.4rem; color:var(--purple); margin:6px 0;">Dolls & Dollhouses</h3>
+              <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:16px;">Fashion dolls, wooden princess mansions, beauty styling vanity kits, and accessories.</p>
+            </div>
+            <a href="products.html?category=Dolls" class="btn-secondary" style="padding:8px 20px; font-size:0.9rem; text-align:center;">
+              Explore Dolls (18+ Toys) →
+            </a>
+          </div>
+        </div>
+
+        <!-- 3. Action Figures -->
+        <div style="background:#FFF; border-radius:var(--radius-lg); border:2px solid #F1F5F9; box-shadow:var(--shadow-sm); overflow:hidden; display:grid; grid-template-columns:1fr 1.2fr;">
+          <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80" alt="Action Figures" style="width:100%; height:100%; object-fit:cover;">
+          <div style="padding:28px; display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <span style="font-size:1.6rem;">🦸</span>
+              <h3 style="font-family:var(--font-heading); font-size:1.4rem; color:var(--orange); margin:6px 0;">Action Figures</h3>
+              <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:16px;">Articulated superhero figures, transformers, battle robots, and anime collectibles.</p>
+            </div>
+            <a href="products.html?category=Action%20Figures" class="btn-secondary" style="padding:8px 20px; font-size:0.9rem; text-align:center;">
+              Explore Figures (20+ Toys) →
+            </a>
+          </div>
+        </div>
+
+        <!-- 4. Remote Control Toys -->
+        <div style="background:#FFF; border-radius:var(--radius-lg); border:2px solid #F1F5F9; box-shadow:var(--shadow-sm); overflow:hidden; display:grid; grid-template-columns:1fr 1.2fr;">
+          <img src="https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=600&q=80" alt="Remote Control Toys" style="width:100%; height:100%; object-fit:cover;">
+          <div style="padding:28px; display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <span style="font-size:1.6rem;">🎮</span>
+              <h3 style="font-family:var(--font-heading); font-size:1.4rem; color:var(--secondary); margin:6px 0;">Remote Control Toys</h3>
+              <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:16px;">4WD high-speed monster trucks, camera drones, stunt cars, and RC speedboats.</p>
+            </div>
+            <a href="products.html?category=Remote%20Control%20Toys" class="btn-secondary" style="padding:8px 20px; font-size:0.9rem; text-align:center;">
+              Explore RC Toys (30+ Toys) →
+            </a>
+          </div>
+        </div>
+
+        <!-- 5. Educational Toys -->
+        <div style="background:#FFF; border-radius:var(--radius-lg); border:2px solid #F1F5F9; box-shadow:var(--shadow-sm); overflow:hidden; display:grid; grid-template-columns:1fr 1.2fr;">
+          <img src="https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=600&q=80" alt="Educational STEM Toys" style="width:100%; height:100%; object-fit:cover;">
+          <div style="padding:28px; display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <span style="font-size:1.6rem;">🧩</span>
+              <h3 style="font-family:var(--font-heading); font-size:1.4rem; color:var(--green); margin:6px 0;">Educational Toys & STEM</h3>
+              <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:16px;">Robotics building sets, magnetic tiles, science experiment kits, and preschool learning tablets.</p>
+            </div>
+            <a href="products.html?category=Educational%20Toys" class="btn-secondary" style="padding:8px 20px; font-size:0.9rem; text-align:center;">
+              Explore Educational (22+ Toys) →
+            </a>
+          </div>
+        </div>
+
+        <!-- 6. Board Games -->
+        <div style="background:#FFF; border-radius:var(--radius-lg); border:2px solid #F1F5F9; box-shadow:var(--shadow-sm); overflow:hidden; display:grid; grid-template-columns:1fr 1.2fr;">
+          <img src="https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?auto=format&fit=crop&w=600&q=80" alt="Board Games" style="width:100%; height:100%; object-fit:cover;">
+          <div style="padding:28px; display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <span style="font-size:1.6rem;">🎲</span>
+              <h3 style="font-family:var(--font-heading); font-size:1.4rem; color:var(--yellow-hover); margin:6px 0;">Board Games</h3>
+              <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:16px;">Family strategy trading games, wooden chess sets, memory card games, and jigsaw puzzles.</p>
+            </div>
+            <a href="products.html?category=Board%20Games" class="btn-secondary" style="padding:8px 20px; font-size:0.9rem; text-align:center;">
+              Explore Board Games (15+ Toys) →
+            </a>
+          </div>
+        </div>
+
+        <!-- 7. Soft Toys -->
+        <div style="background:#FFF; border-radius:var(--radius-lg); border:2px solid #F1F5F9; box-shadow:var(--shadow-sm); overflow:hidden; display:grid; grid-template-columns:1fr 1.2fr;">
+          <img src="https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=600&q=80" alt="Soft Toys and Teddy Bears" style="width:100%; height:100%; object-fit:cover;">
+          <div style="padding:28px; display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <span style="font-size:1.6rem;">🧸</span>
+              <h3 style="font-family:var(--font-heading); font-size:1.4rem; color:var(--primary); margin:6px 0;">Soft Toys & Plushies</h3>
+              <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:16px;">Giant cuddly teddy bears, glowing unicorns, baby rattle plushies, and cartoon characters.</p>
+            </div>
+            <a href="products.html?category=Soft%20Toys" class="btn-secondary" style="padding:8px 20px; font-size:0.9rem; text-align:center;">
+              Explore Soft Toys (20+ Toys) →
+            </a>
+          </div>
+        </div>
+
+        <!-- 8. Outdoor Toys -->
+        <div style="background:#FFF; border-radius:var(--radius-lg); border:2px solid #F1F5F9; box-shadow:var(--shadow-sm); overflow:hidden; display:grid; grid-template-columns:1fr 1.2fr;">
+          <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=600&q=80" alt="Outdoor Toys" style="width:100%; height:100%; object-fit:cover;">
+          <div style="padding:28px; display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <span style="font-size:1.6rem;">⚽</span>
+              <h3 style="font-family:var(--font-heading); font-size:1.4rem; color:#3A86FF; margin:6px 0;">Outdoor Toys</h3>
+              <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:16px;">Foldable LED kick scooters, kids soccer goals, water blaster soakers, and play tents.</p>
+            </div>
+            <a href="products.html?category=Outdoor%20Toys" class="btn-secondary" style="padding:8px 20px; font-size:0.9rem; text-align:center;">
+              Explore Outdoor (16+ Toys) →
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Cart Drawer Component -->
+  <div id="cart-drawer-overlay" class="cart-drawer-overlay" onclick="window.HTSCart.closeCartDrawer()"></div>
+  <div id="cart-drawer" class="cart-drawer">
+    <div class="cart-drawer-header">
+      <h3 class="cart-drawer-title"><span>🛒</span> Your Shopping Cart</h3>
+      <button class="cart-close-btn" onclick="window.HTSCart.closeCartDrawer()">✕</button>
+    </div>
+    <div id="cart-empty-message" style="display:none; padding:40px 24px; text-align:center;">
+      <div style="font-size:3rem; margin-bottom:12px;">🧸</div>
+      <h4 style="font-family:var(--font-heading); font-size:1.2rem; margin-bottom:8px;">Your cart is empty!</h4>
+      <a href="products.html" onclick="window.HTSCart.closeCartDrawer()" class="btn-primary" style="padding:10px 24px;">Start Shopping</a>
+    </div>
+    <div id="cart-filled-body" style="display:flex; flex-direction:column; flex:1; overflow:hidden;">
+      <div id="cart-items-container" class="cart-items-scroll"></div>
+      <div class="cart-drawer-footer">
+        <div class="cart-summary-line"><span>Subtotal</span><span id="cart-subtotal-price" style="font-weight:700;">Rs. 0</span></div>
+        <div class="cart-summary-line"><span>Delivery Across Pakistan</span><span id="cart-delivery-price" style="color:var(--green); font-weight:700;">FREE</span></div>
+        <div class="cart-summary-line total"><span>Total (PKR)</span><span id="cart-final-total-price" style="color:var(--primary);">Rs. 0</span></div>
+        <div class="cart-btn-group">
+          <button onclick="window.open(window.HTSCart.generateWhatsAppOrderUrl(), '_blank')" class="btn-whatsapp" style="width:100%;">Order via WhatsApp 💬</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="https://wa.me/923008765432" target="_blank" rel="noopener" class="whatsapp-float-btn" title="Chat on WhatsApp">💬</a>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom-bar" style="border-top:none; padding-top:0;">
+        <div>© 2026 Hafeez Toy Store Pakistan. Where Every Toy Brings a Smile!</div>
+        <div class="payment-badges-row">
+          <span class="payment-badge">💵 Cash On Delivery (COD)</span>
+          <span class="payment-badge">📱 JazzCash / Easypaisa</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="supabase.js"></script>
+</body>
+</html>

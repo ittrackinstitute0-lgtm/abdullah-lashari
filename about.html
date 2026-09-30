@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Hafeez Toy Store Pakistan</title>
+  <meta name="description" content="Learn about Hafeez Toy Store — Pakistan's favorite children's toy destination focused on non-toxic safety, creative learning, high-speed remote control fun, and nationwide Cash on Delivery.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <div class="announcement-bar">
+    <span>🎉 <strong>FREE Delivery</strong> across Pakistan on orders over Rs. 3,000! | Cash on Delivery Available</span>
+    <a href="https://wa.me/923008765432" target="_blank" rel="noopener">📱 WhatsApp: 0300-8765432</a>
+  </div>
+
+  <header class="header-sticky">
+    <div class="container navbar-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon-bubble">🧸</div>
+        <div class="brand-text-group">
+          <span class="brand-name">Hafeez <span>Toy Store</span></span>
+          <span class="brand-tagline">Where Every Toy Brings a Smile</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="categories.html" class="nav-link">Categories</a></li>
+          <li><a href="products.html" class="nav-link">Products</a></li>
+          <li><a href="index.html#special-offers" class="nav-link">Deals 🔥</a></li>
+          <li><a href="about.html" class="nav-link active">About Us</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button onclick="window.HTSCart.openCartDrawer()" class="action-btn" title="View Shopping Cart">
+          <span>🛒</span>
+          <span class="action-badge cart-counter-badge" style="display:none;">0</span>
+        </button>
+        <a href="admin.html" class="admin-link-btn">
+          <span>⚙️</span> Admin
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Hero -->
+  <div style="background:var(--grad-hero); padding:60px 0 40px; text-align:center; border-bottom:1px solid #F1F5F9;">
+    <div class="container" style="max-width:760px;">
+      <span class="section-tag">Our Story</span>
+      <h1 style="font-family:var(--font-heading); font-size:3rem; margin-bottom:14px; color:var(--text-dark);">
+        Where Every Toy Brings a Smile! 🧸✨
+      </h1>
+      <p style="font-size:1.15rem; color:var(--text-muted); line-height:1.7;">
+        At <strong>Hafeez Toy Store</strong>, we believe childhood should be filled with boundless wonder, creative exploration, active laughter, and cherished family memories.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Story Content -->
+  <main class="section-wrap" style="padding:60px 0 80px;">
+    <div class="container">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center; margin-bottom:80px;">
+        <div>
+          <span class="section-tag">Quality & Safety First</span>
+          <h2 style="font-family:var(--font-heading); font-size:2.2rem; color:var(--text-dark); margin-bottom:18px;">
+            Crafting Smiles For Over 15 Years in Pakistan
+          </h2>
+          <p style="color:var(--text-muted); line-height:1.7; margin-bottom:16px; font-size:1.02rem;">
+            From our humble beginnings at Hafeez Centre in Lahore to serving families all across Pakistan from Karachi to Peshawar and Quetta, Hafeez Toy Store is dedicated to providing only authentic, safe, and durable toys.
+          </p>
+          <p style="color:var(--text-muted); line-height:1.7; margin-bottom:24px; font-size:1.02rem;">
+            Every toy in our inventory undergoes rigorous quality inspection to guarantee that plastics are 100% BPA-free and non-toxic, paints are lead-free, and electronics are certified safe for little hands.
+          </p>
+
+          <div style="display:flex; gap:16px;">
+            <a href="products.html" class="btn-primary">Explore Our Toys 🛍️</a>
+            <a href="contact.html" class="btn-secondary">Visit Our Store 📍</a>
+          </div>
+        </div>
+
+        <div style="border-radius:28px; overflow:hidden; box-shadow:var(--shadow-lg); border:5px solid #FFF;">
+          <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=700&q=80" alt="Children playing with toys" style="width:100%; height:400px; object-fit:cover;">
+        </div>
+      </div>
+
+      <!-- Core Values -->
+      <div class="section-header">
+        <span class="section-tag">Our Core Pillars</span>
+        <h2 class="section-title">The Hafeez Toy Store Promise</h2>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-box">
+          <div class="feature-icon-circle" style="background:var(--primary-light); color:var(--primary);">🌟</div>
+          <h3 class="feature-title">Premium Quality</h3>
+          <p class="feature-desc">We stock only tested, durable toys from reputable manufacturers designed to withstand rough play.</p>
+        </div>
+
+        <div class="feature-box">
+          <div class="feature-icon-circle" style="background:var(--green-light); color:var(--green);">🛡️</div>
+          <h3 class="feature-title">Certified Safe</h3>
+          <p class="feature-desc">No sharp edges, 100% non-toxic pigments, child-safe battery compartments, and certified materials.</p>
+        </div>
+
+        <div class="feature-box">
+          <div class="feature-icon-circle" style="background:var(--yellow-light); color:var(--yellow-hover);">💡</div>
+          <h3 class="feature-title">Educational & Fun</h3>
+          <p class="feature-desc">Inspiring STEM toys, logic puzzles, and strategic board games that boost cognitive growth.</p>
+        </div>
+
+        <div class="feature-box">
+          <div class="feature-icon-circle" style="background:var(--secondary-light); color:var(--secondary);">🚚</div>
+          <h3 class="feature-title">Fast Nationwide Delivery</h3>
+          <p class="feature-desc">Reliable Cash on Delivery reaching every doorstep across Pakistan within 2 to 4 business days.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Cart Drawer Component -->
+  <div id="cart-drawer-overlay" class="cart-drawer-overlay" onclick="window.HTSCart.closeCartDrawer()"></div>
+  <div id="cart-drawer" class="cart-drawer">
+    <div class="cart-drawer-header">
+      <h3 class="cart-drawer-title"><span>🛒</span> Your Shopping Cart</h3>
+      <button class="cart-close-btn" onclick="window.HTSCart.closeCartDrawer()">✕</button>
+    </div>
+    <div id="cart-empty-message" style="display:none; padding:40px 24px; text-align:center;">
+      <div style="font-size:3rem; margin-bottom:12px;">🧸</div>
+      <h4 style="font-family:var(--font-heading); font-size:1.2rem; margin-bottom:8px;">Your cart is empty!</h4>
+      <a href="products.html" onclick="window.HTSCart.closeCartDrawer()" class="btn-primary">Start Shopping</a>
+    </div>
+    <div id="cart-filled-body" style="display:flex; flex-direction:column; flex:1; overflow:hidden;">
+      <div id="cart-items-container" class="cart-items-scroll"></div>
+      <div class="cart-drawer-footer">
+        <div class="cart-summary-line"><span>Subtotal</span><span id="cart-subtotal-price" style="font-weight:700;">Rs. 0</span></div>
+        <div class="cart-summary-line"><span>Delivery Across Pakistan</span><span id="cart-delivery-price" style="color:var(--green); font-weight:700;">FREE</span></div>
+        <div class="cart-summary-line total"><span>Total (PKR)</span><span id="cart-final-total-price" style="color:var(--primary);">Rs. 0</span></div>
+        <div class="cart-btn-group">
+          <button onclick="window.open(window.HTSCart.generateWhatsAppOrderUrl(), '_blank')" class="btn-whatsapp" style="width:100%;">Order via WhatsApp 💬</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="https://wa.me/923008765432" target="_blank" rel="noopener" class="whatsapp-float-btn" title="Chat on WhatsApp">💬</a>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom-bar" style="border-top:none; padding-top:0;">
+        <div>© 2026 Hafeez Toy Store Pakistan. Where Every Toy Brings a Smile!</div>
+        <div class="payment-badges-row">
+          <span class="payment-badge">💵 Cash On Delivery (COD)</span>
+          <span class="payment-badge">📱 JazzCash / Easypaisa</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="supabase.js"></script>
+</body>
+</html>

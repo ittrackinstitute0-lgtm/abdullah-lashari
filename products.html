@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toy Products Catalog | Hafeez Toy Store Pakistan</title>
+  <meta name="description" content="Browse hundreds of exciting toys for boys and girls in Pakistan. High speed RC monster trucks, dolls, STEM learning kits, board games, soft plushies and outdoor games.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <div class="announcement-bar">
+    <span>🎉 <strong>FREE Delivery</strong> across Pakistan on orders over Rs. 3,000! | Cash on Delivery Available</span>
+    <a href="https://wa.me/923008765432" target="_blank" rel="noopener">📱 WhatsApp: 0300-8765432</a>
+  </div>
+
+  <!-- Sticky Header -->
+  <header class="header-sticky">
+    <div class="container navbar-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon-bubble">🧸</div>
+        <div class="brand-text-group">
+          <span class="brand-name">Hafeez <span>Toy Store</span></span>
+          <span class="brand-tagline">Where Every Toy Brings a Smile</span>
+        </div>
+      </a>
+
+      <div class="header-search">
+        <span class="header-search-icon">🔍</span>
+        <input type="text" id="catalog-search-input" class="header-search-input" placeholder="Search toys..." oninput="handleCatalogSearch(this.value)">
+      </div>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="categories.html" class="nav-link">Categories</a></li>
+          <li><a href="products.html" class="nav-link active">Products</a></li>
+          <li><a href="index.html#special-offers" class="nav-link">Deals 🔥</a></li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button onclick="window.HTSCart.openCartDrawer()" class="action-btn" title="View Shopping Cart">
+          <span>🛒</span>
+          <span class="action-badge cart-counter-badge" style="display:none;">0</span>
+        </button>
+        <a href="admin.html" class="admin-link-btn">
+          <span>⚙️</span> Admin
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumb & Header Title -->
+  <div style="background:var(--grad-hero); padding:40px 0 20px; border-bottom:1px solid #F1F5F9;">
+    <div class="container">
+      <div style="font-size:0.85rem; color:var(--text-muted); margin-bottom:8px;">
+        <a href="index.html">Home</a> &gt; <span style="color:var(--primary); font-weight:700;">Products Catalog</span>
+      </div>
+      <h1 style="font-family:var(--font-heading); font-size:2.4rem; color:var(--text-dark);">
+        Explore All Toys 🚀
+      </h1>
+      <p style="color:var(--text-muted); font-size:1rem;">Discover authentic, certified safe, and brain-stimulating toys for every child in Pakistan.</p>
+    </div>
+  </div>
+
+  <!-- Products Catalog Main Body -->
+  <main class="section-wrap" style="padding:40px 0 80px;">
+    <div class="container" style="display:grid; grid-template-columns: 280px 1fr; gap:36px; align-items:start;">
+      
+      <!-- Filters Sidebar -->
+      <aside style="background:#FFF; border-radius:var(--radius-md); padding:24px; border:2px solid #F1F5F9; box-shadow:var(--shadow-sm); position:sticky; top:100px;">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; border-bottom:1px solid #F1F5F9; padding-bottom:12px;">
+          <h3 style="font-family:var(--font-heading); font-size:1.2rem;">Filters</h3>
+          <button onclick="resetFilters()" style="background:none; color:var(--primary); font-size:0.85rem; font-weight:700; cursor:pointer;">Reset All</button>
+        </div>
+
+        <!-- Categories Filter -->
+        <div style="margin-bottom:24px;">
+          <h4 style="font-size:0.95rem; font-weight:700; margin-bottom:12px;">Categories</h4>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <label style="display:flex; align-items:center; gap:8px; font-size:0.9rem; cursor:pointer;">
+              <input type="radio" name="catFilter" value="all" checked onchange="applyFilters()"> All Categories
+            </label>
+            <label style="display:flex; align-items:center; gap:8px; font-size:0.9rem; cursor:pointer;">
+              <input type="radio" name="catFilter" value="Cars & Vehicles" onchange="applyFilters()"> 🚗 Cars & Vehicles
+            </label>
+            <label style="display:flex; align-items:center; gap:8px; font-size:0.9rem; cursor:pointer;">
+              <input type="radio" name="catFilter" value="Dolls" onchange="applyFilters()"> 👧 Dolls
+            </label>
+            <label style="display:flex; align-items:center; gap:8px; font-size:0.9rem; cursor:pointer;">
+              <input type="radio" name="catFilter" value="Action Figures" onchange="applyFilters()"> 🦸 Action Figures
+            </label>
+            <label style="display:flex; align-items:center; gap:8px; font-size:0.9rem; cursor:pointer;">
+              <input type="radio" name="catFilter" value="Remote Control Toys" onchange="applyFilters()"> 🎮 Remote Control
+            </label>
+            <label style="display:flex; align-items:center; gap:8px; font-size:0.9rem; cursor:pointer;">
+              <input type="radio" name="catFilter" value="Educational Toys" onchange="applyFilters()"> 🧩 Educational Toys
+            </label>
+            <label style="display:flex; align-items:center; gap:8px; font-size:0.9rem; cursor:pointer;">
+              <input type="radio" name="catFilter" value="Board Games" onchange="applyFilters()"> 🎲 Board Games
+            </label>
+            <label style="display:flex; align-items:center; gap:8px; font-size:0.9rem; cursor:pointer;">
+              <input type="radio" name="catFilter" value="Soft Toys" onchange="applyFilters()"> 🧸 Soft Toys
+            </label>
+            <label style="display:flex; align-items:center; gap:8px; font-size:0.9rem; cursor:pointer;">
+              <input type="radio" name="catFilter" value="Outdoor Toys" onchange="applyFilters()"> ⚽ Outdoor Toys
+            </label>
+          </div>
+        </div>
+
+        <!-- Price Range Filter -->
+        <div style="margin-bottom:24px;">
+          <h4 style="font-size:0.95rem; font-weight:700; margin-bottom:8px;">Max Price (PKR)</h4>
+          <input type="range" id="price-range" min="1000" max="15000" step="500" value="15000" style="width:100%; accent-color:var(--primary);" oninput="document.getElementById('price-val').textContent = 'Rs. ' + Number(this.value).toLocaleString(); applyFilters();">
+          <div style="display:flex; justify-content:space-between; font-size:0.85rem; color:var(--text-muted); margin-top:4px;">
+            <span>Rs. 1,000</span>
+            <span id="price-val" style="font-weight:700; color:var(--primary);">Rs. 15,000</span>
+          </div>
+        </div>
+
+        <!-- WhatsApp Quick Assistant -->
+        <div style="background:var(--secondary-light); padding:16px; border-radius:14px; text-align:center;">
+          <div style="font-size:1.8rem; margin-bottom:6px;">💬</div>
+          <h5 style="font-family:var(--font-heading); font-size:0.95rem; margin-bottom:4px;">Need Help Choosing?</h5>
+          <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">Our toy consultants are active on WhatsApp.</p>
+          <a href="https://wa.me/923008765432" target="_blank" class="btn-whatsapp" style="padding:8px 16px; font-size:0.82rem; width:100%;">
+            Chat on WhatsApp
+          </a>
+        </div>
+      </aside>
+
+      <!-- Products Grid & Controls -->
+      <div>
+        <!-- Top Toolbar (Count & Sorting) -->
+        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:28px; background:#FFF; padding:14px 20px; border-radius:14px; border:1px solid #F1F5F9;">
+          <div id="catalog-count-text" style="font-weight:700; color:var(--text-dark);">Showing toys...</div>
+          <div style="display:flex; align-items:center; gap:10px;">
+            <label style="font-size:0.88rem; font-weight:600; color:var(--text-muted);">Sort By:</label>
+            <select id="sort-select" class="form-select" style="padding:6px 14px; width:auto; border-radius:10px;" onchange="applyFilters()">
+              <option value="featured">Featured / Bestselling</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating">Highest Rated</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Dynamic Catalog Grid -->
+        <div class="products-grid" id="catalog-grid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Cart Drawer Component -->
+  <div id="cart-drawer-overlay" class="cart-drawer-overlay" onclick="window.HTSCart.closeCartDrawer()"></div>
+  <div id="cart-drawer" class="cart-drawer">
+    <div class="cart-drawer-header">
+      <h3 class="cart-drawer-title"><span>🛒</span> Your Shopping Cart</h3>
+      <button class="cart-close-btn" onclick="window.HTSCart.closeCartDrawer()">✕</button>
+    </div>
+    <div id="cart-empty-message" style="display:none; padding:40px 24px; text-align:center;">
+      <div style="font-size:3rem; margin-bottom:12px;">🧸</div>
+      <h4 style="font-family:var(--font-heading); font-size:1.2rem; margin-bottom:8px;">Your cart is empty!</h4>
+      <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px;">Pick something special from our catalog!</p>
+    </div>
+    <div id="cart-filled-body" style="display:flex; flex-direction:column; flex:1; overflow:hidden;">
+      <div id="cart-items-container" class="cart-items-scroll"></div>
+      <div class="cart-drawer-footer">
+        <div class="cart-summary-line">
+          <span>Subtotal</span>
+          <span id="cart-subtotal-price" style="font-weight:700;">Rs. 0</span>
+        </div>
+        <div class="cart-summary-line">
+          <span>Delivery Across Pakistan</span>
+          <span id="cart-delivery-price" style="color:var(--green); font-weight:700;">FREE</span>
+        </div>
+        <div class="cart-summary-line total">
+          <span>Total (PKR)</span>
+          <span id="cart-final-total-price" style="color:var(--primary);">Rs. 0</span>
+        </div>
+        <div class="cart-btn-group">
+          <button onclick="window.open(window.HTSCart.generateWhatsAppOrderUrl(), '_blank')" class="btn-whatsapp" style="width:100%;">
+            <span>Order via WhatsApp (Instant COD) 💬</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/923008765432" target="_blank" rel="noopener" class="whatsapp-float-btn" title="Chat on WhatsApp">💬</a>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom-bar" style="border-top:none; padding-top:0;">
+        <div>© 2026 Hafeez Toy Store Pakistan. Where Every Toy Brings a Smile!</div>
+        <div class="payment-badges-row">
+          <span class="payment-badge">💵 Cash On Delivery (COD)</span>
+          <span class="payment-badge">📱 JazzCash / Easypaisa</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="supabase.js"></script>
+  <script>
+    let catalogItems = [];
+
+    async function initCatalog() {
+      catalogItems = await window.HTSSupabase.fetchProducts();
+
+      // Check URL search params for category
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlCat = urlParams.get('category');
+      if (urlCat) {
+        const rad = document.querySelector(`input[name="catFilter"][value="${urlCat}"]`);
+        if (rad) rad.checked = true;
+      }
+
+      applyFilters();
+    }
+
+    function applyFilters() {
+      const selectedCat = document.querySelector('input[name="catFilter"]:checked').value;
+      const maxPrice = Number(document.getElementById('price-range').value);
+      const sortBy = document.getElementById('sort-select').value;
+      const searchQuery = (document.getElementById('catalog-search-input')?.value || '').toLowerCase();
+
+      let filtered = catalogItems.filter(p => {
+        const catMatch = selectedCat === 'all' || p.category === selectedCat;
+        const currentPrice = p.discount_price || p.price;
+        const priceMatch = currentPrice <= maxPrice;
+        const searchMatch = !searchQuery || 
+          p.name.toLowerCase().includes(searchQuery) || 
+          p.category.toLowerCase().includes(searchQuery);
+
+        return catMatch && priceMatch && searchMatch;
+      });
+
+      // Sorting
+      if (sortBy === 'price-low') {
+        filtered.sort((a, b) => (a.discount_price || a.price) - (b.discount_price || b.price));
+      } else if (sortBy === 'price-high') {
+        filtered.sort((a, b) => (b.discount_price || b.price) - (a.discount_price || a.price));
+      } else if (sortBy === 'rating') {
+        filtered.sort((a, b) => (b.rating || 5) - (a.rating || 5));
+      }
+
+      renderCatalog(filtered);
+    }
+
+    function renderCatalog(products) {
+      const grid = document.getElementById('catalog-grid');
+      const countEl = document.getElementById('catalog-count-text');
+      if (!grid) return;
+
+      countEl.textContent = `Showing ${products.length} Products`;
+
+      if (products.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align:center; padding:60px 20px; background:#FFF; border-radius:18px;">
+            <div style="font-size:3.5rem; margin-bottom:12px;">🔍</div>
+            <h3 style="font-family:var(--font-heading); font-size:1.3rem; margin-bottom:8px;">No toys match your filter!</h3>
+            <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:16px;">Try adjusting your search keyword or price slider.</p>
+            <button onclick="resetFilters()" class="btn-primary">Reset Filters</button>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = products.map(p => {
+        const hasDiscount = p.discount_price && p.discount_price < p.price;
+        const currentPrice = hasDiscount ? p.discount_price : p.price;
+        const discountPct = hasDiscount ? Math.round(((p.price - p.discount_price) / p.price) * 100) : 0;
+        const isWish = window.HTSWishlist.isWishlisted(p.id);
+
+        return `
+          <div class="product-card">
+            <div class="product-card-top">
+              <img src="${p.image_url}" alt="${p.name}" loading="lazy">
+              ${p.badge ? `<span class="product-badge">${p.badge}</span>` : (hasDiscount ? `<span class="product-badge" style="background:var(--yellow); color:#1E2238;">${discountPct}% OFF</span>` : '')}
+              <button class="product-wish-btn ${isWish ? 'active' : ''}" data-wishlist-btn data-product-id="${p.id}" onclick="window.HTSWishlist.toggle('${p.id}')">
+                ${isWish ? '❤️' : '🤍'}
+              </button>
+            </div>
+            <div class="product-card-body">
+              <span class="product-category-text">${p.category}</span>
+              <h3 class="product-title">
+                <a href="product-details.html?id=${p.id}">${p.name}</a>
+              </h3>
+              <div class="product-rating-row">
+                <span class="stars">★★★★★</span>
+                <span class="reviews-num">(${p.reviews_count || 12})</span>
+              </div>
+              <div class="product-price-row">
+                <span class="price-current">Rs. ${(currentPrice).toLocaleString()}</span>
+                ${hasDiscount ? `<span class="price-old">Rs. ${(p.price).toLocaleString()}</span>` : ''}
+              </div>
+              <div class="product-actions-grid">
+                <button onclick="window.HTSCart.addItem('${p.id}', 1)" class="btn-card-cart">
+                  <span>Add to Cart 🛒</span>
+                </button>
+                <a href="product-details.html?id=${p.id}" class="btn-card-view" title="View Details">
+                  👁️
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function handleCatalogSearch(val) {
+      applyFilters();
+    }
+
+    function resetFilters() {
+      document.querySelector('input[name="catFilter"][value="all"]').checked = true;
+      document.getElementById('price-range').value = 15000;
+      document.getElementById('price-val').textContent = 'Rs. 15,000';
+      if (document.getElementById('catalog-search-input')) document.getElementById('catalog-search-input').value = '';
+      document.getElementById('sort-select').value = 'featured';
+      applyFilters();
+    }
+
+    document.addEventListener('DOMContentLoaded', initCatalog);
+  </script>
+</body>
+</html>

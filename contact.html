@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us & Store Location | Hafeez Toy Store</title>
+  <meta name="description" content="Contact Hafeez Toy Store in Lahore Pakistan. Reach us via WhatsApp, call our helpline, visit our store at Hafeez Centre Gulberg III Lahore, or send an inquiry online.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <div class="announcement-bar">
+    <span>🎉 <strong>FREE Delivery</strong> across Pakistan on orders over Rs. 3,000! | Cash on Delivery Available</span>
+    <a href="https://wa.me/923008765432" target="_blank" rel="noopener">📱 WhatsApp: 0300-8765432</a>
+  </div>
+
+  <header class="header-sticky">
+    <div class="container navbar-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon-bubble">🧸</div>
+        <div class="brand-text-group">
+          <span class="brand-name">Hafeez <span>Toy Store</span></span>
+          <span class="brand-tagline">Where Every Toy Brings a Smile</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="categories.html" class="nav-link">Categories</a></li>
+          <li><a href="products.html" class="nav-link">Products</a></li>
+          <li><a href="index.html#special-offers" class="nav-link">Deals 🔥</a></li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="contact.html" class="nav-link active">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button onclick="window.HTSCart.openCartDrawer()" class="action-btn" title="View Shopping Cart">
+          <span>🛒</span>
+          <span class="action-badge cart-counter-badge" style="display:none;">0</span>
+        </button>
+        <a href="admin.html" class="admin-link-btn">
+          <span>⚙️</span> Admin
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contact Header -->
+  <div style="background:var(--grad-hero); padding:60px 0 40px; text-align:center; border-bottom:1px solid #F1F5F9;">
+    <div class="container" style="max-width:750px;">
+      <span class="section-tag">We're Here For You</span>
+      <h1 style="font-family:var(--font-heading); font-size:2.8rem; margin-bottom:12px;">Contact Hafeez Toy Store 📞</h1>
+      <p style="color:var(--text-muted); font-size:1.1rem;">Have questions about toy recommendations, order delivery, or bulk orders? We'd love to assist you!</p>
+    </div>
+  </div>
+
+  <!-- Contact Body -->
+  <main class="section-wrap" style="padding:50px 0 80px;">
+    <div class="container">
+      <div class="contact-grid" style="margin-bottom:60px;">
+        
+        <!-- Store Information -->
+        <div class="contact-info-card">
+          <h3 style="font-family:var(--font-heading); font-size:1.5rem; color:var(--primary);">Store Details</h3>
+          
+          <div class="contact-method-item">
+            <div class="contact-icon-box">📍</div>
+            <div class="contact-method-info">
+              <h4>Lahore Flagship Store</h4>
+              <p>Shop # 14-B, Ground Floor, Hafeez Centre, Main Boulevard, Gulberg III, Lahore, Pakistan</p>
+            </div>
+          </div>
+
+          <div class="contact-method-item">
+            <div class="contact-icon-box">📱</div>
+            <div class="contact-method-info">
+              <h4>Call & Helpline</h4>
+              <p>+92 300 8765432<br>+92 42 35789000</p>
+            </div>
+          </div>
+
+          <div class="contact-method-item">
+            <div class="contact-icon-box">💬</div>
+            <div class="contact-method-info">
+              <h4>WhatsApp Hotline</h4>
+              <p>Instant orders & video previews: <strong>0300 8765432</strong></p>
+            </div>
+          </div>
+
+          <div class="contact-method-item">
+            <div class="contact-icon-box">⏰</div>
+            <div class="contact-method-info">
+              <h4>Store Opening Hours</h4>
+              <p>Monday – Sunday: 11:00 AM – 10:00 PM</p>
+            </div>
+          </div>
+
+          <div>
+            <a href="https://wa.me/923008765432?text=Assalam-o-Alaikum%20Hafeez%20Toy%20Store!%20I%20need%20assistance." target="_blank" class="btn-whatsapp" style="width:100%; font-size:1rem;">
+              <span>Chat Directly on WhatsApp 💬</span>
+            </a>
+          </div>
+
+          <!-- Google Map -->
+          <div style="border-radius:18px; overflow:hidden; border:2px solid #E2E8F0; height:200px; margin-top:10px;">
+            <iframe 
+              title="Hafeez Toy Store Location"
+              src="https://maps.google.com/maps?q=Hafeez%20Centre,%20Gulberg%20III,%20Lahore&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+              width="100%" 
+              height="100%" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy">
+            </iframe>
+          </div>
+        </div>
+
+        <!-- Contact Inquiry Form (Connected to Supabase) -->
+        <div>
+          <h3 style="font-family:var(--font-heading); font-size:1.5rem; margin-bottom:20px;">Send Us A Direct Message ✉️</h3>
+          <form id="contact-page-form" onsubmit="handlePageContactSubmit(event)">
+            <div class="form-group">
+              <label class="form-label">Your Full Name *</label>
+              <input type="text" id="cp-name" class="form-input" placeholder="e.g. Abdullah Khan" required>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+              <div class="form-group">
+                <label class="form-label">Email Address *</label>
+                <input type="email" id="cp-email" class="form-input" placeholder="you@example.com" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Mobile / WhatsApp Number *</label>
+                <input type="tel" id="cp-phone" class="form-input" placeholder="0300 1234567" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Subject</label>
+              <select id="cp-subject" class="form-select">
+                <option value="Toy Inquiry">Toy Recommendation & Stock Availability</option>
+                <option value="Order Tracking">Cash on Delivery Order Tracking</option>
+                <option value="Birthday Gift Advice">Birthday / Festival Gift Advice</option>
+                <option value="Wholesale">Wholesale & School Bulk Purchase</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Your Message *</label>
+              <textarea id="cp-msg" class="form-textarea" placeholder="Type your questions or details here..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary" style="width:100%; font-size:1.05rem;">
+              <span>Send Message (Recorded to Supabase) 🚀</span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Frequently Asked Questions Accordion -->
+      <div style="max-width:800px; margin:0 auto;">
+        <div class="section-header" style="margin-bottom:30px;">
+          <span class="section-tag">Need Quick Answers?</span>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div style="background:#FFF; padding:20px; border-radius:16px; border:2px solid #F1F5F9; box-shadow:var(--shadow-sm);">
+            <h4 style="font-family:var(--font-heading); font-size:1.1rem; color:var(--primary); margin-bottom:6px;">🚚 How long does Cash on Delivery take in Pakistan?</h4>
+            <p style="color:var(--text-muted); font-size:0.92rem;">Orders in Lahore are typically delivered within 24 hours. Karachi, Islamabad, Rawalpindi, Faisalabad, and other Pakistani cities take 2 to 4 business days via verified couriers.</p>
+          </div>
+
+          <div style="background:#FFF; padding:20px; border-radius:16px; border:2px solid #F1F5F9; box-shadow:var(--shadow-sm);">
+            <h4 style="font-family:var(--font-heading); font-size:1.1rem; color:var(--secondary); margin-bottom:6px;">🛡️ Are the toys authentic and child-safe?</h4>
+            <p style="color:var(--text-muted); font-size:0.92rem;">Yes, 100%! All toys sold at Hafeez Toy Store are made from certified non-toxic ABS materials, BPA-free plastics, and safe round-edged finishes.</p>
+          </div>
+
+          <div style="background:#FFF; padding:20px; border-radius:16px; border:2px solid #F1F5F9; box-shadow:var(--shadow-sm);">
+            <h4 style="font-family:var(--font-heading); font-size:1.1rem; color:var(--green-hover); margin-bottom:6px;">🔄 What is your return & exchange policy?</h4>
+            <p style="color:var(--text-muted); font-size:0.92rem;">We offer a 7-day hassle-free replacement warranty for any manufacturing defect or damaged parcel on arrival.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Cart Drawer Component -->
+  <div id="cart-drawer-overlay" class="cart-drawer-overlay" onclick="window.HTSCart.closeCartDrawer()"></div>
+  <div id="cart-drawer" class="cart-drawer">
+    <div class="cart-drawer-header">
+      <h3 class="cart-drawer-title"><span>🛒</span> Your Shopping Cart</h3>
+      <button class="cart-close-btn" onclick="window.HTSCart.closeCartDrawer()">✕</button>
+    </div>
+    <div id="cart-empty-message" style="display:none; padding:40px 24px; text-align:center;">
+      <div style="font-size:3rem; margin-bottom:12px;">🧸</div>
+      <h4 style="font-family:var(--font-heading); font-size:1.2rem; margin-bottom:8px;">Your cart is empty!</h4>
+      <a href="products.html" onclick="window.HTSCart.closeCartDrawer()" class="btn-primary">Start Shopping</a>
+    </div>
+    <div id="cart-filled-body" style="display:flex; flex-direction:column; flex:1; overflow:hidden;">
+      <div id="cart-items-container" class="cart-items-scroll"></div>
+      <div class="cart-drawer-footer">
+        <div class="cart-summary-line"><span>Subtotal</span><span id="cart-subtotal-price" style="font-weight:700;">Rs. 0</span></div>
+        <div class="cart-summary-line"><span>Delivery Across Pakistan</span><span id="cart-delivery-price" style="color:var(--green); font-weight:700;">FREE</span></div>
+        <div class="cart-summary-line total"><span>Total (PKR)</span><span id="cart-final-total-price" style="color:var(--primary);">Rs. 0</span></div>
+        <div class="cart-btn-group">
+          <button onclick="window.open(window.HTSCart.generateWhatsAppOrderUrl(), '_blank')" class="btn-whatsapp" style="width:100%;">Order via WhatsApp 💬</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="https://wa.me/923008765432" target="_blank" rel="noopener" class="whatsapp-float-btn" title="Chat on WhatsApp">💬</a>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom-bar" style="border-top:none; padding-top:0;">
+        <div>© 2026 Hafeez Toy Store Pakistan. Where Every Toy Brings a Smile!</div>
+        <div class="payment-badges-row">
+          <span class="payment-badge">💵 Cash On Delivery (COD)</span>
+          <span class="payment-badge">📱 JazzCash / Easypaisa</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="supabase.js"></script>
+  <script>
+    async function handlePageContactSubmit(e) {
+      e.preventDefault();
+      const inquiry = {
+        fullName: document.getElementById('cp-name').value.trim(),
+        email: document.getElementById('cp-email').value.trim(),
+        phone: document.getElementById('cp-phone').value.trim(),
+        subject: document.getElementById('cp-subject').value,
+        message: document.getElementById('cp-msg').value.trim()
+      };
+
+      await window.HTSSupabase.submitInquiry(inquiry);
+      document.getElementById('contact-page-form').reset();
+    }
+  </script>
+</body>
+</html>

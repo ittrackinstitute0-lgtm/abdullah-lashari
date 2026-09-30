@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hafeez Toy Store | Where Every Toy Brings a Smile!</title>
+  <meta name="description" content="Pakistan's favorite online toy store for kids of all ages. High-speed RC cars, dolls, action figures, STEM educational toys, board games, soft plushies, and outdoor fun with nationwide Cash on Delivery.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <!-- ========================================================================
+       1. TOP ANNOUNCEMENT BAR
+       ======================================================================== -->
+  <div class="announcement-bar">
+    <span>🎉 <strong>FREE Delivery</strong> across Pakistan on orders over Rs. 3,000! | Cash on Delivery Available</span>
+    <a href="https://wa.me/923008765432" target="_blank" rel="noopener">📱 WhatsApp: 0300-8765432</a>
+  </div>
+
+  <!-- ========================================================================
+       2. STICKY NAVIGATION BAR
+       ======================================================================== -->
+  <header class="header-sticky">
+    <div class="container navbar-container">
+      <!-- Logo -->
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon-bubble">🧸</div>
+        <div class="brand-text-group">
+          <span class="brand-name">Hafeez <span>Toy Store</span></span>
+          <span class="brand-tagline">Where Every Toy Brings a Smile</span>
+        </div>
+      </a>
+
+      <!-- Search Bar -->
+      <div class="header-search">
+        <span class="header-search-icon">🔍</span>
+        <input type="text" id="global-search-input" class="header-search-input" placeholder="Search cars, dolls, LEGO, RC toys..." oninput="handleLiveSearch(this.value)">
+      </div>
+
+      <!-- Desktop Nav Menu -->
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="categories.html" class="nav-link">Categories</a></li>
+          <li><a href="products.html" class="nav-link">Products</a></li>
+          <li><a href="#special-offers" class="nav-link">Deals 🔥</a></li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="header-actions">
+        <!-- Wishlist -->
+        <a href="products.html" class="action-btn" title="My Wishlist">
+          <span>💖</span>
+          <span class="action-badge wishlist-counter-badge" style="display:none;">0</span>
+        </a>
+
+        <!-- Shopping Cart Trigger -->
+        <button onclick="window.HTSCart.openCartDrawer()" class="action-btn" title="View Shopping Cart">
+          <span>🛒</span>
+          <span class="action-badge cart-counter-badge" style="display:none;">0</span>
+        </button>
+
+        <!-- Admin Panel Switch -->
+        <a href="admin.html" class="admin-link-btn" title="Admin Control Center">
+          <span>⚙️</span> Admin
+        </a>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle Menu">☰</button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" style="display:none; background:#FFF; border-bottom:2px solid #F1F5F9; padding:16px 20px;">
+      <div style="margin-bottom: 12px;">
+        <input type="text" class="form-input" placeholder="Search toys..." oninput="handleLiveSearch(this.value)">
+      </div>
+      <ul style="list-style:none; display:flex; flex-direction:column; gap:10px;">
+        <li><a href="index.html" class="nav-link">🏠 Home</a></li>
+        <li><a href="categories.html" class="nav-link">📂 All Categories</a></li>
+        <li><a href="products.html" class="nav-link">🛍️ All Products</a></li>
+        <li><a href="#special-offers" class="nav-link">🔥 Special Deals</a></li>
+        <li><a href="about.html" class="nav-link">📖 About Hafeez Toys</a></li>
+        <li><a href="contact.html" class="nav-link">📞 Contact & Map</a></li>
+        <li><a href="admin.html" class="nav-link" style="color:var(--purple); font-weight:700;">⚙️ Admin Panel (Abdullah)</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       3. HERO SECTION
+       ======================================================================== -->
+  <section class="hero-section">
+    <div class="container hero-grid">
+      <!-- Left Content -->
+      <div class="hero-content">
+        <div class="hero-pill-badge">
+          <span>⭐ Pakistan's Most Trusted Kids Toy Store</span>
+        </div>
+        <h1 class="hero-title">
+          Where Every Toy <br>
+          <span class="highlight">Brings a Smile!</span> 🎉
+        </h1>
+        <p class="hero-subtitle">
+          Discover Pakistan's premier collection of safe, educational, remote-control, and imaginative toys. Designed to inspire creativity, joy, and endless smiles for boys and girls of all ages.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="products.html" class="btn-primary">
+            <span>Shop Now 🛍️</span>
+          </a>
+          <a href="#special-offers" class="btn-secondary">
+            <span>Special Offers 30% Off 🔥</span>
+          </a>
+          <a href="https://wa.me/923008765432?text=Assalam-o-Alaikum!%20I%20want%20to%20order%20toys%20from%20Hafeez%20Toy%20Store." target="_blank" class="btn-whatsapp">
+            <span>Order via WhatsApp 💬</span>
+          </a>
+        </div>
+
+        <!-- Trust Stats -->
+        <div class="hero-stats-row">
+          <div class="hero-stat-item">
+            <span class="stat-number">15,000+</span>
+            <span class="stat-label">Happy Kids & Parents</span>
+          </div>
+          <div class="hero-stat-item">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Non-Toxic & Certified Safe</span>
+          </div>
+          <div class="hero-stat-item">
+            <span class="stat-number">Pakistan</span>
+            <span class="stat-label">Fast COD Nationwide</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Visual & 3D Badges -->
+      <div class="hero-visual-wrapper">
+        <!-- Floating Toy Stickers -->
+        <div class="floating-toy-badge floating-badge-1">
+          <span class="badge-icon">🚀</span>
+          <div>
+            <div>High-Speed RC</div>
+            <small style="color:var(--text-muted);">2.4GHz Off-Road</small>
+          </div>
+        </div>
+
+        <div class="hero-main-img-card">
+          <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=700&q=80" alt="Hafeez Toy Store Happy Kids">
+        </div>
+
+        <div class="floating-toy-badge floating-badge-2">
+          <span class="badge-icon">🧸</span>
+          <div>
+            <div>Premium Quality</div>
+            <small style="color:var(--primary); font-weight:800;">Up to 30% OFF</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       4. POPULAR TOY CATEGORIES (8 MANDATORY CATEGORIES)
+       ======================================================================== -->
+  <section class="section-wrap" id="categories" style="background:#FFF;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Explore By Category</span>
+        <h2 class="section-title">Toy Categories For Every Age</h2>
+        <p class="section-desc">From thrilling remote-control monster trucks to cuddly teddy bears and brain-boosting STEM puzzles.</p>
+      </div>
+
+      <div class="categories-grid">
+        <!-- 1. Cars & Vehicles -->
+        <a href="products.html?category=Cars%20%26%20Vehicles" class="category-card" style="--card-color: #FF3366; --card-bg: #FFE5ED;">
+          <div class="category-icon-wrap">🚗</div>
+          <h3 class="category-card-title">Cars & Vehicles</h3>
+          <span class="category-card-count">Die-cast, tracks & monster trucks</span>
+        </a>
+
+        <!-- 2. Dolls -->
+        <a href="products.html?category=Dolls" class="category-card" style="--card-color: #8338EC; --card-bg: #F3E8FF;">
+          <div class="category-icon-wrap">👧</div>
+          <h3 class="category-card-title">Dolls</h3>
+          <span class="category-card-count">Dollhouses, princesses & fashion sets</span>
+        </a>
+
+        <!-- 3. Action Figures -->
+        <a href="products.html?category=Action%20Figures" class="category-card" style="--card-color: #FB5607; --card-bg: #FFE8DF;">
+          <div class="category-icon-wrap">🦸</div>
+          <h3 class="category-card-title">Action Figures</h3>
+          <span class="category-card-count">Superheroes, robots & anime figures</span>
+        </a>
+
+        <!-- 4. Remote Control Toys -->
+        <a href="products.html?category=Remote%20Control%20Toys" class="category-card" style="--card-color: #00B4D8; --card-bg: #E0F7FC;">
+          <div class="category-icon-wrap">🎮</div>
+          <h3 class="category-card-title">Remote Control Toys</h3>
+          <span class="category-card-count">RC cars, drones & stunt helicopters</span>
+        </a>
+
+        <!-- 5. Educational Toys -->
+        <a href="products.html?category=Educational%20Toys" class="category-card" style="--card-color: #06D6A0; --card-bg: #E6FBF5;">
+          <div class="category-icon-wrap">🧩</div>
+          <h3 class="category-card-title">Educational Toys</h3>
+          <span class="category-card-count">STEM kits, building blocks & science</span>
+        </a>
+
+        <!-- 6. Board Games -->
+        <a href="products.html?category=Board%20Games" class="category-card" style="--card-color: #FFB703; --card-bg: #FFF8E1;">
+          <div class="category-icon-wrap">🎲</div>
+          <h3 class="category-card-title">Board Games</h3>
+          <span class="category-card-count">Family games, chess & brain puzzles</span>
+        </a>
+
+        <!-- 7. Soft Toys -->
+        <a href="products.html?category=Soft%20Toys" class="category-card" style="--card-color: #FF477E; --card-bg: #FFEBF1;">
+          <div class="category-icon-wrap">🧸</div>
+          <h3 class="category-card-title">Soft Toys</h3>
+          <span class="category-card-count">Plushies, giant bears & cuddle pillows</span>
+        </a>
+
+        <!-- 8. Outdoor Toys -->
+        <a href="products.html?category=Outdoor%20Toys" class="category-card" style="--card-color: #3A86FF; --card-bg: #EBF2FF;">
+          <div class="category-icon-wrap">⚽</div>
+          <h3 class="category-card-title">Outdoor Toys</h3>
+          <span class="category-card-count">Kick scooters, sports & water blasters</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       5. SPECIAL OFFERS & DISCOUNT BANNER (UP TO 30% OFF)
+       ======================================================================== -->
+  <section class="section-wrap" id="special-offers" style="padding-top:20px; padding-bottom:40px;">
+    <div class="container">
+      <div class="offer-banner-wrap">
+        <div class="offer-grid">
+          <div>
+            <span class="offer-badge">🎉 MEGA FESTIVAL SALE</span>
+            <h2 class="offer-title">Up to 30% Off On All Best-Selling Toys!</h2>
+            <p class="offer-desc">Bring home unlimited joy with unbeatable deals on premium RC vehicles, robotic STEM kits, and luxury dollhouses.</p>
+
+            <!-- Countdown Timer -->
+            <div class="countdown-box">
+              <div class="time-slot">
+                <div class="time-value" id="hours-val">18</div>
+                <div class="time-label">Hours</div>
+              </div>
+              <div class="time-slot">
+                <div class="time-value" id="mins-val">42</div>
+                <div class="time-label">Mins</div>
+              </div>
+              <div class="time-slot">
+                <div class="time-value" id="secs-val">19</div>
+                <div class="time-label">Secs</div>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+              <a href="products.html" class="btn-primary" style="background:#FFF; color:var(--primary);">Grab Deal Now 🎁</a>
+              <a href="https://wa.me/923008765432?text=Hi%20Hafeez%20Toy%20Store,%20please%20send%20me%20today's%2030%25%20discount%20catalog!" target="_blank" class="btn-whatsapp">WhatsApp Deal Hotline 💬</a>
+            </div>
+          </div>
+
+          <div style="text-align:center;">
+            <img src="https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=600&q=80" alt="Special Deal RC Car" style="border-radius:24px; box-shadow:0 15px 35px rgba(0,0,0,0.3); border:4px solid rgba(255,255,255,0.4); margin:0 auto; max-height:300px; object-fit:cover;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       6. FEATURED PRODUCTS SECTION (PKR CURRENCY + ADD TO CART + BUY NOW)
+       ======================================================================== -->
+  <section class="section-wrap" id="products">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Kids Favorites</span>
+        <h2 class="section-title">Trending Toys In Pakistan</h2>
+        <p class="section-desc">Hand-picked bestsellers guaranteed to ignite your child's imagination and smiles.</p>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="products-filter-bar">
+        <button class="filter-pill active" onclick="filterHomeProducts('all', this)">All Toys</button>
+        <button class="filter-pill" onclick="filterHomeProducts('Remote Control Toys', this)">🎮 Remote Control</button>
+        <button class="filter-pill" onclick="filterHomeProducts('Cars & Vehicles', this)">🚗 Cars & Vehicles</button>
+        <button class="filter-pill" onclick="filterHomeProducts('Dolls', this)">👧 Dolls</button>
+        <button class="filter-pill" onclick="filterHomeProducts('Educational Toys', this)">🧩 STEM & Blocks</button>
+        <button class="filter-pill" onclick="filterHomeProducts('Soft Toys', this)">🧸 Soft Toys</button>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="products-grid" id="home-products-grid">
+        <!-- Rendered dynamically from Supabase / seed products in supabase.js -->
+      </div>
+
+      <div style="text-align:center; margin-top:50px;">
+        <a href="products.html" class="btn-primary" style="padding:16px 40px; font-size:1.15rem;">
+          View Complete Catalog (100+ Toys) →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       7. WHY CHOOSE HAFEEZ TOY STORE (TRUST FEATURES)
+       ======================================================================== -->
+  <section class="section-wrap" style="background:#FFF;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Quality & Trust</span>
+        <h2 class="section-title">Why Parents Love Hafeez Toy Store</h2>
+        <p class="section-desc">We prioritize safety, genuine quality, affordability, and lightning-fast delivery across Pakistan.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-box">
+          <div class="feature-icon-circle" style="background:var(--primary-light); color:var(--primary);">🛡️</div>
+          <h3 class="feature-title">100% Non-Toxic & Safe</h3>
+          <p class="feature-desc">All toys meet strict international safety standards with child-safe, non-toxic materials.</p>
+        </div>
+
+        <div class="feature-box">
+          <div class="feature-icon-circle" style="background:var(--secondary-light); color:var(--secondary);">🚚</div>
+          <h3 class="feature-title">Express Cash On Delivery</h3>
+          <p class="feature-desc">Fast 2-4 days home delivery across Karachi, Lahore, Islamabad, Faisalabad and all Pakistan.</p>
+        </div>
+
+        <div class="feature-box">
+          <div class="feature-icon-circle" style="background:var(--yellow-light); color:var(--yellow-hover);">💰</div>
+          <h3 class="feature-title">Affordable Best Prices</h3>
+          <p class="feature-desc">Direct warehouse pricing with frequent discounts up to 30% off on premium toy brands.</p>
+        </div>
+
+        <div class="feature-box">
+          <div class="feature-icon-circle" style="background:var(--green-light); color:var(--green);">💬</div>
+          <h3 class="feature-title">Instant WhatsApp Support</h3>
+          <p class="feature-desc">Have a question? Direct video preview and order booking via WhatsApp at your service.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       8. ABOUT HAFEEZ TOY STORE (STORY & VALUES)
+       ======================================================================== -->
+  <section class="section-wrap" id="about" style="background:var(--bg-body);">
+    <div class="container">
+      <div class="about-preview-grid">
+        <div class="about-img-box">
+          <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=800&q=80" alt="Hafeez Toy Store Shop">
+          <div class="about-experience-badge">
+            <div class="years">15+</div>
+            <div>Years of Smiles</div>
+          </div>
+        </div>
+
+        <div>
+          <span class="section-tag">About Our Store</span>
+          <h2 class="section-title">Bringing Joy & Learning To Every Pakistani Home</h2>
+          <p style="font-size:1.05rem; color:var(--text-muted); margin-bottom:18px; line-height:1.7;">
+            Founded with a passion to bring the world's most joyful and educational toys to Pakistan, <strong>Hafeez Toy Store</strong> has grown into a household name trusted by tens of thousands of parents.
+          </p>
+          <p style="font-size:0.95rem; color:var(--text-muted); margin-bottom:24px; line-height:1.7;">
+            Whether you are looking for an action-packed remote control monster truck, a creative wooden dollhouse, brain-stimulating STEM kits, or cuddly teddy bears for birthdays, we curate each toy with maximum love, safety, and durability in mind.
+          </p>
+
+          <div style="display:flex; gap:16px; flex-wrap:wrap;">
+            <a href="about.html" class="btn-primary">Read Our Full Story →</a>
+            <a href="contact.html" class="btn-secondary">Visit Our Lahore Store 📍</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       9. CONTACT & STORE LOCATION (GOOGLE MAP + WHATSAPP)
+       ======================================================================== -->
+  <section class="section-wrap" id="contact" style="background:#FFF;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Get In Touch</span>
+        <h2 class="section-title">Visit Our Store Or Order Online</h2>
+        <p class="section-desc">We are always thrilled to assist you with toy recommendations and instant order confirmations.</p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Contact Information -->
+        <div class="contact-info-card">
+          <h3 style="font-family:var(--font-heading); font-size:1.5rem; color:var(--primary); margin-bottom:10px;">Hafeez Toy Store</h3>
+          
+          <div class="contact-method-item">
+            <div class="contact-icon-box">📍</div>
+            <div class="contact-method-info">
+              <h4>Store Location</h4>
+              <p>Shop # 14-B, Ground Floor, Hafeez Centre, Main Boulevard, Gulberg III, Lahore, Pakistan</p>
+            </div>
+          </div>
+
+          <div class="contact-method-item">
+            <div class="contact-icon-box">📱</div>
+            <div class="contact-method-info">
+              <h4>Phone & WhatsApp</h4>
+              <p>+92 300 8765432 / +92 42 35789000</p>
+            </div>
+          </div>
+
+          <div class="contact-method-item">
+            <div class="contact-icon-box">⏰</div>
+            <div class="contact-method-info">
+              <h4>Store Timings</h4>
+              <p>Monday – Sunday: 11:00 AM – 10:00 PM</p>
+            </div>
+          </div>
+
+          <div style="margin-top:10px;">
+            <a href="https://wa.me/923008765432?text=Assalam-o-Alaikum%20Hafeez%20Toy%20Store!%20I%20have%20an%20inquiry." target="_blank" class="btn-whatsapp" style="width:100%;">
+              <span>Chat with Store Manager on WhatsApp 💬</span>
+            </a>
+          </div>
+
+          <!-- Embedded Map -->
+          <div style="border-radius:16px; overflow:hidden; border:2px solid #E2E8F0; margin-top:16px; height:180px;">
+            <iframe 
+              title="Hafeez Toy Store Location Map"
+              src="https://maps.google.com/maps?q=Hafeez%20Centre,%20Gulberg%20III,%20Lahore&t=&z=14&ie=UTF8&iwloc=&output=embed" 
+              width="100%" 
+              height="100%" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy">
+            </iframe>
+          </div>
+        </div>
+
+        <!-- Contact Form (Directly Connected to Supabase) -->
+        <div>
+          <h3 style="font-family:var(--font-heading); font-size:1.4rem; margin-bottom:16px;">Send Us A Message 💌</h3>
+          <form id="contact-form" onsubmit="handleContactSubmit(event)">
+            <div class="form-group">
+              <label class="form-label">Your Full Name *</label>
+              <input type="text" id="contact-name" class="form-input" placeholder="e.g. Abdullah Khan" required>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+              <div class="form-group">
+                <label class="form-label">Email Address *</label>
+                <input type="email" id="contact-email" class="form-input" placeholder="abdullah@example.com" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Phone / WhatsApp Number *</label>
+                <input type="tel" id="contact-phone" class="form-input" placeholder="0300 1234567" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Subject</label>
+              <select id="contact-subject" class="form-select">
+                <option value="Toy Inquiry">Toy Inquiry / Recommendation</option>
+                <option value="Order Status">Order Tracking / Status</option>
+                <option value="Wholesale Bulk Order">Wholesale / School Orders</option>
+                <option value="Feedback">Feedback / Suggestion</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Message *</label>
+              <textarea id="contact-msg" class="form-textarea" placeholder="Write your message or inquiry here..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary" style="width:100%;">
+              <span>Send Message to Hafeez Toys 🚀</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       10. NEWSLETTER & PROMO
+       ======================================================================== -->
+  <section style="background:var(--grad-primary); padding:50px 0; color:#FFF; text-align:center;">
+    <div class="container" style="max-width:700px;">
+      <h2 style="font-family:var(--font-heading); font-size:2.2rem; font-weight:700; margin-bottom:10px;">Get 10% Off Your First Toy Order! 🎁</h2>
+      <p style="font-size:1.05rem; opacity:0.95; margin-bottom:24px;">Subscribe to our VIP Kids Club for weekly flash sale alerts and exclusive discount promo codes.</p>
+      
+      <form onsubmit="handleNewsletterSubmit(event)" style="display:flex; gap:10px; max-width:500px; margin:0 auto; flex-wrap:wrap;">
+        <input type="email" id="newsletter-email" class="form-input" placeholder="Enter your email..." required style="flex:1; min-width:240px; background:#FFF; border-radius:var(--radius-full);">
+        <button type="submit" class="btn-secondary" style="background:#FFF; color:var(--primary); border:none; padding:12px 28px;">Subscribe 🎉</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       11. FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1: About Brand -->
+        <div>
+          <div class="brand-logo" style="margin-bottom:16px;">
+            <div class="brand-icon-bubble">🧸</div>
+            <div class="brand-text-group">
+              <span class="brand-name" style="color:#FFF;">Hafeez <span>Toy Store</span></span>
+              <span class="brand-tagline" style="color:var(--yellow);">Where Every Toy Brings a Smile</span>
+            </div>
+          </div>
+          <p style="color:#94A3B8; font-size:0.9rem; margin-bottom:20px; line-height:1.6;">
+            Pakistan's leading online toy store bringing happiness, certified safety, and high-quality play to boys and girls across all cities with nationwide Cash on Delivery.
+          </p>
+          <div style="display:flex; gap:12px; font-size:1.4rem;">
+            <span>📸</span>
+            <span>📘</span>
+            <span>▶️</span>
+            <span>💬</span>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div>
+          <h4 class="footer-col-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li class="footer-link-item"><a href="index.html">Home</a></li>
+            <li class="footer-link-item"><a href="products.html">All Products</a></li>
+            <li class="footer-link-item"><a href="categories.html">Toy Categories</a></li>
+            <li class="footer-link-item"><a href="about.html">About Us</a></li>
+            <li class="footer-link-item"><a href="contact.html">Contact & Store Map</a></li>
+            <li class="footer-link-item"><a href="admin.html" style="color:var(--secondary);">Admin Portal (Abdullah)</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Categories -->
+        <div>
+          <h4 class="footer-col-title">Top Categories</h4>
+          <ul class="footer-links">
+            <li class="footer-link-item"><a href="products.html?category=Remote%20Control%20Toys">Remote Control Toys</a></li>
+            <li class="footer-link-item"><a href="products.html?category=Cars%20%26%20Vehicles">Cars & Vehicles</a></li>
+            <li class="footer-link-item"><a href="products.html?category=Dolls">Dolls & Houses</a></li>
+            <li class="footer-link-item"><a href="products.html?category=Educational%20Toys">STEM & Educational</a></li>
+            <li class="footer-link-item"><a href="products.html?category=Soft%20Toys">Soft Plushies</a></li>
+            <li class="footer-link-item"><a href="products.html?category=Outdoor%20Toys">Outdoor Kick Scooters</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Contact & Hotline -->
+        <div>
+          <h4 class="footer-col-title">Contact Hotline</h4>
+          <p style="color:#94A3B8; font-size:0.9rem; margin-bottom:12px;">
+            <strong>WhatsApp Hotline:</strong> +92 300 8765432<br>
+            <strong>Store Address:</strong> Hafeez Centre, Main Boulevard, Gulberg III, Lahore<br>
+            <strong>Email:</strong> support@hafeeztoys.pk
+          </p>
+          <a href="https://wa.me/923008765432" target="_blank" class="btn-whatsapp" style="padding:10px 18px; font-size:0.85rem;">
+            Order on WhatsApp 💬
+          </a>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom-bar">
+        <div>
+          © 2026 Hafeez Toy Store. All rights reserved. Designed with ❤️ for Pakistani kids.
+        </div>
+        <div class="payment-badges-row">
+          <span class="payment-badge">💵 Cash On Delivery (COD)</span>
+          <span class="payment-badge">📱 JazzCash</span>
+          <span class="payment-badge">🟢 Easypaisa</span>
+          <span class="payment-badge">🏦 Bank Transfer</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       SLIDE-OVER SHOPPING CART DRAWER
+       ======================================================================== -->
+  <div id="cart-drawer-overlay" class="cart-drawer-overlay" onclick="window.HTSCart.closeCartDrawer()"></div>
+  <div id="cart-drawer" class="cart-drawer">
+    <div class="cart-drawer-header">
+      <h3 class="cart-drawer-title"><span>🛒</span> Your Shopping Cart</h3>
+      <button class="cart-close-btn" onclick="window.HTSCart.closeCartDrawer()">✕</button>
+    </div>
+
+    <!-- Empty Message -->
+    <div id="cart-empty-message" style="display:none; padding:40px 24px; text-align:center;">
+      <div style="font-size:3rem; margin-bottom:12px;">🧸</div>
+      <h4 style="font-family:var(--font-heading); font-size:1.2rem; margin-bottom:8px;">Your cart is empty!</h4>
+      <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px;">Explore our colorful toy collections and pick something special!</p>
+      <a href="products.html" onclick="window.HTSCart.closeCartDrawer()" class="btn-primary" style="padding:10px 24px;">Start Shopping 🛍️</a>
+    </div>
+
+    <!-- Filled Body -->
+    <div id="cart-filled-body" style="display:flex; flex-direction:column; flex:1; overflow:hidden;">
+      <div id="cart-items-container" class="cart-items-scroll">
+        <!-- Rendered by window.HTSCart.renderCartDrawer() -->
+      </div>
+
+      <div class="cart-drawer-footer">
+        <div class="cart-summary-line">
+          <span>Subtotal</span>
+          <span id="cart-subtotal-price" style="font-weight:700;">Rs. 0</span>
+        </div>
+        <div class="cart-summary-line">
+          <span>Delivery Across Pakistan</span>
+          <span id="cart-delivery-price" style="color:var(--green); font-weight:700;">FREE (Orders > Rs. 3,000)</span>
+        </div>
+        <div class="cart-summary-line total">
+          <span>Total (PKR)</span>
+          <span id="cart-final-total-price" style="color:var(--primary);">Rs. 0</span>
+        </div>
+
+        <div class="cart-btn-group">
+          <!-- WhatsApp Order Direct Button -->
+          <button onclick="handleWhatsAppCartCheckout()" class="btn-whatsapp" style="width:100%; font-size:1rem;">
+            <span>Order via WhatsApp (Instant COD) 💬</span>
+          </button>
+          
+          <!-- Direct Web Checkout Modal -->
+          <button onclick="openCheckoutModal()" class="btn-primary" style="width:100%;">
+            <span>Proceed to Direct Checkout 🛍️</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       DIRECT CHECKOUT MODAL
+       ======================================================================== -->
+  <div id="checkout-modal" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 style="font-family:var(--font-heading); font-size:1.3rem;">🧸 Complete Your Toy Order (Cash On Delivery)</h3>
+        <button class="cart-close-btn" onclick="closeCheckoutModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <form id="checkout-form" onsubmit="handleDirectCheckout(event)">
+          <div class="form-group">
+            <label class="form-label">Full Name *</label>
+            <input type="text" id="chk-name" class="form-input" placeholder="e.g. Asif Raza" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Mobile Number (For Courier Call) *</label>
+            <input type="tel" id="chk-phone" class="form-input" placeholder="0300 1234567" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">City in Pakistan *</label>
+            <select id="chk-city" class="form-select" required>
+              <option value="Lahore">Lahore</option>
+              <option value="Karachi">Karachi</option>
+              <option value="Islamabad">Islamabad</option>
+              <option value="Rawalpindi">Rawalpindi</option>
+              <option value="Faisalabad">Faisalabad</option>
+              <option value="Multan">Multan</option>
+              <option value="Peshawar">Peshawar</option>
+              <option value="Quetta">Quetta</option>
+              <option value="Sialkot">Sialkot</option>
+              <option value="Gujranwala">Gujranwala</option>
+              <option value="Other Pakistan City">Other Pakistan City</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Full Delivery Address *</label>
+            <textarea id="chk-address" class="form-textarea" placeholder="House/Flat No, Street, Sector, Area..." required style="min-height:80px;"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Payment Method</label>
+            <div style="background:#F8F9FC; padding:12px; border-radius:12px; border:2px solid #E2E8F0; display:flex; align-items:center; gap:8px;">
+              <input type="radio" checked id="cod-radio">
+              <label for="cod-radio" style="font-weight:700; cursor:pointer;">💵 Cash on Delivery (Pay when you receive toys)</label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-primary" style="width:100%; margin-top:10px;">
+            <span>Confirm Order Now 🚀</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       QUICK VIEW PRODUCT MODAL
+       ======================================================================== -->
+  <div id="quickview-modal" class="modal-overlay">
+    <div class="modal-card" style="max-width:700px;">
+      <div class="modal-header">
+        <h3 id="qv-title" style="font-family:var(--font-heading); font-size:1.25rem;">Product Details</h3>
+        <button class="cart-close-btn" onclick="closeQuickView()">✕</button>
+      </div>
+      <div class="modal-body" style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+        <div>
+          <img id="qv-img" src="" alt="Toy Preview" style="width:100%; height:260px; object-fit:cover; border-radius:18px; border:2px solid #E2E8F0;">
+        </div>
+        <div style="display:flex; flex-direction:column; justify-content:space-between;">
+          <div>
+            <span id="qv-category" style="font-size:0.75rem; font-weight:700; color:var(--secondary); text-transform:uppercase;">Category</span>
+            <h4 id="qv-name" style="font-family:var(--font-heading); font-size:1.2rem; margin:6px 0 10px;">Toy Name</h4>
+            <div style="display:flex; align-items:baseline; gap:10px; margin-bottom:12px;">
+              <span id="qv-price" style="font-family:var(--font-heading); font-size:1.4rem; font-weight:700; color:var(--primary);">Rs. 0</span>
+              <span id="qv-oldprice" style="font-size:0.95rem; color:var(--text-light); text-decoration:line-through;"></span>
+            </div>
+            <p id="qv-desc" style="font-size:0.88rem; color:var(--text-muted); line-height:1.5; margin-bottom:14px;"></p>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <button id="qv-add-btn" class="btn-primary" style="width:100%;">Add to Cart 🛒</button>
+            <button id="qv-wa-btn" class="btn-whatsapp" style="width:100%;">WhatsApp Order 💬</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       FLOATING WHATSAPP BUTTON
+       ======================================================================== -->
+  <a href="https://wa.me/923008765432?text=Assalam-o-Alaikum!%20I%20want%20to%20inquire%20about%20toys%20at%20Hafeez%20Toy%20Store." target="_blank" rel="noopener" class="whatsapp-float-btn" title="Chat on WhatsApp">
+    💬
+  </a>
+
+  <!-- ========================================================================
+       SCRIPTS & LOGIC
+       ======================================================================== -->
+  <script src="supabase.js"></script>
+  <script>
+    let allProducts = [];
+
+    // Render Home Products Grid
+    async function loadHomeProducts() {
+      allProducts = await window.HTSSupabase.fetchProducts();
+      renderHomeGrid(allProducts);
+    }
+
+    function renderHomeGrid(products) {
+      const grid = document.getElementById('home-products-grid');
+      if (!grid) return;
+
+      grid.innerHTML = products.slice(0, 8).map(p => {
+        const hasDiscount = p.discount_price && p.discount_price < p.price;
+        const currentPrice = hasDiscount ? p.discount_price : p.price;
+        const discountPct = hasDiscount ? Math.round(((p.price - p.discount_price) / p.price) * 100) : 0;
+        const isWish = window.HTSWishlist.isWishlisted(p.id);
+
+        return `
+          <div class="product-card">
+            <div class="product-card-top">
+              <img src="${p.image_url}" alt="${p.name}" loading="lazy">
+              ${p.badge ? `<span class="product-badge">${p.badge}</span>` : (hasDiscount ? `<span class="product-badge" style="background:var(--yellow); color:#1E2238;">${discountPct}% OFF</span>` : '')}
+              <button class="product-wish-btn ${isWish ? 'active' : ''}" data-wishlist-btn data-product-id="${p.id}" onclick="window.HTSWishlist.toggle('${p.id}')">
+                ${isWish ? '❤️' : '🤍'}
+              </button>
+            </div>
+            <div class="product-card-body">
+              <span class="product-category-text">${p.category}</span>
+              <h3 class="product-title">
+                <a href="product-details.html?id=${p.id}">${p.name}</a>
+              </h3>
+              <div class="product-rating-row">
+                <span class="stars">★★★★★</span>
+                <span class="reviews-num">(${p.reviews_count || 12})</span>
+              </div>
+              <div class="product-price-row">
+                <span class="price-current">Rs. ${(currentPrice).toLocaleString()}</span>
+                ${hasDiscount ? `<span class="price-old">Rs. ${(p.price).toLocaleString()}</span>` : ''}
+              </div>
+              <div class="product-actions-grid">
+                <button onclick="window.HTSCart.addItem('${p.id}', 1)" class="btn-card-cart">
+                  <span>Add to Cart 🛒</span>
+                </button>
+                <button onclick="openQuickView('${p.id}')" class="btn-card-view" title="Quick View">
+                  👁️
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function filterHomeProducts(category, btn) {
+      document.querySelectorAll('.products-filter-bar .filter-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      if (category === 'all') {
+        renderHomeGrid(allProducts);
+      } else {
+        const filtered = allProducts.filter(p => p.category === category);
+        renderHomeGrid(filtered);
+      }
+    }
+
+    function handleLiveSearch(query) {
+      if (!query || query.trim() === '') {
+        renderHomeGrid(allProducts);
+        return;
+      }
+      const q = query.toLowerCase();
+      const filtered = allProducts.filter(p => 
+        p.name.toLowerCase().includes(q) || 
+        p.category.toLowerCase().includes(q) || 
+        (p.description && p.description.toLowerCase().includes(q))
+      );
+      renderHomeGrid(filtered);
+    }
+
+    // Quick View Modal
+    function openQuickView(productId) {
+      const p = allProducts.find(item => String(item.id) === String(productId));
+      if (!p) return;
+
+      document.getElementById('qv-title').textContent = p.name;
+      document.getElementById('qv-name').textContent = p.name;
+      document.getElementById('qv-category').textContent = p.category;
+      document.getElementById('qv-img').src = p.image_url;
+      document.getElementById('qv-desc').textContent = p.description || 'Child-safe, premium quality toy from Hafeez Toy Store.';
+
+      const hasDiscount = p.discount_price && p.discount_price < p.price;
+      const currentPrice = hasDiscount ? p.discount_price : p.price;
+      document.getElementById('qv-price').textContent = `Rs. ${currentPrice.toLocaleString()}`;
+      document.getElementById('qv-oldprice').textContent = hasDiscount ? `Rs. ${p.price.toLocaleString()}` : '';
+
+      document.getElementById('qv-add-btn').onclick = () => {
+        window.HTSCart.addItem(p.id, 1);
+        closeQuickView();
+      };
+
+      document.getElementById('qv-wa-btn').onclick = () => {
+        const msg = encodeURIComponent(`Assalam-o-Alaikum! I want to order: ${p.name} (Rs. ${currentPrice.toLocaleString()})`);
+        window.open(`https://wa.me/923008765432?text=${msg}`, '_blank');
+      };
+
+      document.getElementById('quickview-modal').classList.add('active');
+    }
+
+    function closeQuickView() {
+      document.getElementById('quickview-modal').classList.remove('active');
+    }
+
+    // Checkout Modal Handlers
+    function openCheckoutModal() {
+      const cart = window.HTSCart.getCart();
+      if (cart.length === 0) {
+        showToast('Your shopping cart is empty!', 'error');
+        return;
+      }
+      window.HTSCart.closeCartDrawer();
+      document.getElementById('checkout-modal').classList.add('active');
+    }
+
+    function closeCheckoutModal() {
+      document.getElementById('checkout-modal').classList.remove('active');
+    }
+
+    function handleWhatsAppCartCheckout() {
+      const url = window.HTSCart.generateWhatsAppOrderUrl();
+      if (url) {
+        window.open(url, '_blank');
+      }
+    }
+
+    async function handleDirectCheckout(e) {
+      e.preventDefault();
+      const cart = window.HTSCart.getCart();
+      const subtotal = window.HTSCart.getSubtotal();
+      const deliveryFee = subtotal >= 3000 ? 0 : 250;
+      const totalAmount = subtotal + deliveryFee;
+
+      const orderData = {
+        customerName: document.getElementById('chk-name').value.trim(),
+        customerPhone: document.getElementById('chk-phone').value.trim(),
+        customerCity: document.getElementById('chk-city').value,
+        customerAddress: document.getElementById('chk-address').value.trim(),
+        itemsSummary: cart.map(i => `${i.name} (x${i.qty})`).join(', '),
+        totalAmount: totalAmount,
+        paymentMethod: 'Cash on Delivery (COD)'
+      };
+
+      const orderResult = await window.HTSSupabase.submitOrder(orderData);
+      closeCheckoutModal();
+      window.HTSCart.clearCart();
+
+      showToast(`🎉 Order ${orderResult.order_ref} placed successfully! We will call you to confirm.`, 'success', '📦');
+    }
+
+    // Contact Form
+    async function handleContactSubmit(e) {
+      e.preventDefault();
+      const inquiry = {
+        fullName: document.getElementById('contact-name').value.trim(),
+        email: document.getElementById('contact-email').value.trim(),
+        phone: document.getElementById('contact-phone').value.trim(),
+        subject: document.getElementById('contact-subject').value,
+        message: document.getElementById('contact-msg').value.trim()
+      };
+
+      await window.HTSSupabase.submitInquiry(inquiry);
+      document.getElementById('contact-form').reset();
+    }
+
+    // Newsletter Form
+    async function handleNewsletterSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('newsletter-email').value.trim();
+      await window.HTSSupabase.subscribeNewsletter(email);
+      document.getElementById('newsletter-email').value = '';
+    }
+
+    // Mobile Navigation Drawer Toggle
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+    }
+
+    // Live Countdown Timer
+    function startCountdown() {
+      let totalSeconds = 18 * 3600 + 42 * 60 + 19;
+      setInterval(() => {
+        if (totalSeconds > 0) totalSeconds--;
+        const h = Math.floor(totalSeconds / 3600);
+        const m = Math.floor((totalSeconds % 3600) / 60);
+        const s = totalSeconds % 60;
+        const hEl = document.getElementById('hours-val');
+        const mEl = document.getElementById('mins-val');
+        const sEl = document.getElementById('secs-val');
+        if (hEl) hEl.textContent = String(h).padStart(2, '0');
+        if (mEl) mEl.textContent = String(m).padStart(2, '0');
+        if (sEl) sEl.textContent = String(s).padStart(2, '0');
+      }, 1000);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadHomeProducts();
+      startCountdown();
+    });
+  </script>
+</body>
+</html>

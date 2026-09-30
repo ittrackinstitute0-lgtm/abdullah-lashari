@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Hafeez Toy Store</title>
+  <link rel="stylesheet" href="admin.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="admin-body">
+
+  <!-- ========================================================================
+       PASSWORD AUTHENTICATION OVERLAY (PASSWORD: ABDULLAH)
+       ======================================================================== -->
+  <div id="auth-gate" class="admin-auth-overlay">
+    <div class="admin-auth-card">
+      <div style="font-size:3rem; margin-bottom:12px;">🧸</div>
+      <h2 style="font-family:var(--admin-heading); font-size:1.6rem; color:#FFF; margin-bottom:6px;">Hafeez Toy Store</h2>
+      <p style="color:var(--admin-text-muted); font-size:0.9rem; margin-bottom:24px;">Owner & Manager Control Panel</p>
+      
+      <form onsubmit="handleAdminLogin(event)">
+        <div style="margin-bottom:20px; text-align:left;">
+          <label style="font-size:0.8rem; font-weight:700; color:var(--admin-text-muted); text-transform:uppercase;">Enter Admin Password</label>
+          <input type="password" id="admin-pass-input" class="admin-input" placeholder="Enter password (ABDULLAH)" required style="padding:12px 16px; font-size:1rem; text-align:center; letter-spacing:2px;">
+        </div>
+        <button type="submit" class="admin-btn admin-btn-primary" style="width:100%; justify-content:center; padding:12px; font-size:1rem;">
+          Unlock Dashboard 🔓
+        </button>
+      </form>
+      <div style="margin-top:20px; font-size:0.8rem; color:var(--admin-text-muted);">
+        <a href="index.html" style="color:var(--admin-cyan);">← Return to Storefront</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       ADMIN APP LAYOUT
+       ======================================================================== -->
+  <div class="admin-layout" id="admin-app" style="display:none;">
+    
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-header">
+        <div class="admin-logo-box">🧸</div>
+        <div>
+          <span class="sidebar-brand-name">Hafeez Toys</span>
+          <span class="sidebar-brand-tag">ADMIN</span>
+        </div>
+      </div>
+
+      <nav style="display:flex; flex-direction:column; flex:1;">
+        <span class="sidebar-section-label">Management</span>
+        <a href="admin.html" class="sidebar-link active">
+          <span>📊</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="admin-products.html" class="sidebar-link">
+          <span>🧸</span>
+          <span>Products & Stock</span>
+          <span class="sidebar-badge" id="sidebar-prod-count">12</span>
+        </a>
+        <a href="admin-orders.html" class="sidebar-link">
+          <span>📦</span>
+          <span>Orders</span>
+        </a>
+        <a href="admin-customers.html" class="sidebar-link">
+          <span>👥</span>
+          <span>Inquiries & Subs</span>
+        </a>
+
+        <span class="sidebar-section-label">Storefront</span>
+        <a href="index.html" target="_blank" class="sidebar-link" style="color:var(--admin-cyan);">
+          <span>🌐</span>
+          <span>Live Storefront ↗</span>
+        </a>
+        <a href="products.html" target="_blank" class="sidebar-link" style="color:var(--admin-cyan);">
+          <span>🛍️</span>
+          <span>Catalog View ↗</span>
+        </a>
+
+        <div style="margin-top:auto; padding-top:20px; border-top:1px solid var(--admin-border);">
+          <button onclick="adminLogout()" class="admin-btn admin-btn-danger" style="width:100%; justify-content:center;">
+            Log Out 🔒
+          </button>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+      <!-- Topbar -->
+      <header class="admin-topbar">
+        <div class="admin-topbar-title">
+          <span>Dashboard Overview</span>
+          <span style="font-size:0.75rem; background:rgba(6, 214, 160, 0.15); color:var(--admin-green); padding:4px 10px; border-radius:20px; font-weight:700;">
+            ● Supabase Backend Live
+          </span>
+        </div>
+        <div class="admin-topbar-actions">
+          <a href="admin-products.html" class="admin-btn admin-btn-primary">
+            <span>+ Add New Toy</span>
+          </a>
+        </div>
+      </header>
+
+      <!-- Dashboard Content -->
+      <div class="admin-content">
+        
+        <!-- KPI Cards Grid -->
+        <div class="admin-stats-grid">
+          <div class="admin-kpi-card">
+            <span class="admin-kpi-label">Total Toys in Catalog</span>
+            <span class="admin-kpi-value" id="kpi-total-prods">12</span>
+            <span class="admin-kpi-trend">8 Categories Covered</span>
+          </div>
+
+          <div class="admin-kpi-card">
+            <span class="admin-kpi-label">Catalog Value (PKR)</span>
+            <span class="admin-kpi-value" id="kpi-total-value">Rs. 54,800</span>
+            <span class="admin-kpi-trend">Average Rs. 3,500/toy</span>
+          </div>
+
+          <div class="admin-kpi-card">
+            <span class="admin-kpi-label">Active Orders</span>
+            <span class="admin-kpi-value" id="kpi-total-orders">3</span>
+            <span class="admin-kpi-trend">Cash on Delivery</span>
+          </div>
+
+          <div class="admin-kpi-card">
+            <span class="admin-kpi-label">Supabase Sync</span>
+            <span class="admin-kpi-value" style="color:var(--admin-green); font-size:1.4rem;">Connected ⚡</span>
+            <span class="admin-kpi-trend">mlvtisgkahbkffjcwkam</span>
+          </div>
+        </div>
+
+        <!-- Quick Inventory Overview -->
+        <div class="admin-card-section">
+          <div class="admin-card-header">
+            <h3 class="admin-card-title">Recent Toy Inventory</h3>
+            <a href="admin-products.html" class="admin-btn admin-btn-secondary" style="font-size:0.85rem;">Manage All Products →</a>
+          </div>
+
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Toy</th>
+                <th>Category</th>
+                <th>Price (PKR)</th>
+                <th>Discount</th>
+                <th>Stock</th>
+                <th>Rating</th>
+              </tr>
+            </thead>
+            <tbody id="quick-inventory-tbody">
+              <!-- Rendered by JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Supabase Cloud Connection & Schema Helper -->
+        <div class="admin-card-section">
+          <div class="admin-card-header">
+            <h3 class="admin-card-title">Supabase Database Integration</h3>
+            <span style="font-size:0.85rem; color:var(--admin-text-muted);">Project ID: mlvtisgkahbkffjcwkam</span>
+          </div>
+          <p style="color:var(--admin-text-muted); font-size:0.92rem; margin-bottom:16px; line-height:1.6;">
+            All product additions, edits, deletions, customer orders, and contact inquiries automatically synchronize with your Supabase database table. The SQL schema setup is ready in <code style="color:var(--admin-cyan);">supabase-schema.sql</code>.
+          </p>
+          <div style="background:#0F172A; padding:16px; border-radius:12px; font-family:monospace; font-size:0.85rem; color:#A7F3D0; overflow-x:auto;">
+            Supabase URL: https://mlvtisgkahbkffjcwkam.supabase.co<br>
+            Status: Active Public Anon Access (RLS policies enabled)
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="supabase.js"></script>
+  <script>
+    // Authentication Logic (Password: ABDULLAH)
+    function checkAuth() {
+      if (window.HTSSupabase.isAdminAuthenticated()) {
+        document.getElementById('auth-gate').style.display = 'none';
+        document.getElementById('admin-app').style.display = 'flex';
+        loadDashboardData();
+      } else {
+        document.getElementById('auth-gate').style.display = 'flex';
+        document.getElementById('admin-app').style.display = 'none';
+      }
+    }
+
+    function handleAdminLogin(e) {
+      e.preventDefault();
+      const pass = document.getElementById('admin-pass-input').value;
+      if (window.HTSSupabase.verifyAdminPassword(pass)) {
+        window.HTSSupabase.setAdminAuthenticated(true);
+        checkAuth();
+        showToast('Welcome Abdullah! Admin Panel Unlocked.', 'success', '👑');
+      } else {
+        showToast('Incorrect password! Please enter "ABDULLAH"', 'error', '🔒');
+      }
+    }
+
+    function adminLogout() {
+      window.HTSSupabase.setAdminAuthenticated(false);
+      checkAuth();
+      showToast('Logged out of admin panel', 'info', '🔒');
+    }
+
+    async function loadDashboardData() {
+      const products = await window.HTSSupabase.fetchProducts();
+      
+      // Update KPIs
+      document.getElementById('kpi-total-prods').textContent = products.length;
+      document.getElementById('sidebar-prod-count').textContent = products.length;
+
+      const totalVal = products.reduce((sum, p) => sum + (p.discount_price || p.price), 0);
+      document.getElementById('kpi-total-value').textContent = `Rs. ${totalVal.toLocaleString()}`;
+
+      // Render table
+      const tbody = document.getElementById('quick-inventory-tbody');
+      if (tbody) {
+        tbody.innerHTML = products.slice(0, 6).map(p => {
+          const hasDiscount = p.discount_price && p.discount_price < p.price;
+          return `
+            <tr>
+              <td>
+                <div style="display:flex; align-items:center; gap:10px;">
+                  <img src="${p.image_url}" alt="${p.name}" style="width:36px; height:36px; border-radius:8px; object-fit:cover;">
+                  <strong style="color:#FFF;">${p.name}</strong>
+                </div>
+              </td>
+              <td><span style="color:var(--admin-cyan);">${p.category}</span></td>
+              <td><strong>Rs. ${(p.discount_price || p.price).toLocaleString()}</strong></td>
+              <td>${hasDiscount ? `<span style="color:var(--admin-amber); font-weight:700;">Rs. ${(p.price).toLocaleString()}</span>` : '-'}</td>
+              <td><span style="color:${p.stock > 10 ? 'var(--admin-green)' : 'var(--admin-amber)'}; font-weight:700;">${p.stock} units</span></td>
+              <td>★ ${p.rating || 5.0}</td>
+            </tr>
+          `;
+        }).join('');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', checkAuth);
+  </script>
+</body>
+</html>
